@@ -2,17 +2,17 @@
 
 void setup() {
     // put your setup code here, to run once:
+    //Init LED for blinking
     pinMode(LED_BUILTIN, OUTPUT);
+    //turn led on to show that the teensy is working
+    digitalWrite(LED_BUILTIN, HIGH);
+    //excuting 
+    
+
+    //turn led of when teensy finish his "mission"
+    digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
-    // turn the LED on (HIGH is the voltage level)
-  digitalWrite(LED_BUILTIN, HIGH);
-  // wait for a second
-  delay(1000);
-  // turn the LED off by making the voltage LOW
-  digitalWrite(LED_BUILTIN, LOW);
-   // wait for a second
-  delay(1000);
+   delay(1000);
 }
