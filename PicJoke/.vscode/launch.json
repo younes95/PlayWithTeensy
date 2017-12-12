@@ -6,7 +6,7 @@
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "name": "PlatformIO Debugger",
-            "target": "c:/Users/Soal Abdeldjallil/Documents/PlatformIO/Projects/171209-120136-teensylc/.pioenvs/teensylc/firmware.elf",
+            "target": "d:/Mes projets/A-TECH/InnoLAB/PlayWithTeensy/PlayWithTeensy/PicJoke/.pioenvs/teensylc/firmware.elf",
             "gdbpath": "C:/Users/Soal Abdeldjallil/.platformio/penv/Scripts/piodebuggdb",
             "autorun": [ "source .pioinit" ]
         }

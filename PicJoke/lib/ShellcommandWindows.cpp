@@ -3,19 +3,8 @@
 
 
 void writeline(String cmd){
-    delay(100);
-    Keyboard.print(cmd);  
-    Keyboard.send_now();
-    delay(100);
-
-    Keyboard.set_key1(KEY_ENTER);  
-    Keyboard.send_now();
-    delay(100);
-
-    Keyboard.set_modifier(0);
-    Keyboard.set_key1(0);
-    Keyboard.send_now();
-    delay(100);
+    openPowerShell();
+    writeline(cmd);
 }
 
 void openPowerShell(){
